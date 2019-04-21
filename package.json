@@ -1,6 +1,8 @@
 {
   "private": true,
   "scripts": {
+    "start:firefox": "web-ext run --source-dir=dist --firefox-profile=default",
+    "dev": "run-p watch start:firefox",
     "build": "webpack --mode=production",
     "watch": "webpack --mode=development --watch",
     "web-ext": "web-ext",
