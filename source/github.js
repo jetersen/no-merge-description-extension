@@ -7,20 +7,22 @@ const init = async () => {
     return
   }
   await elementReady('.merge-message')
-  const aButton = '[type=button].js-details-target.btn-primary'
 
   const buttons = select.all(
-    `.btn-group-squash ${aButton}, .btn-group-merge ${aButton}`
+    '.btn-group-squash .js-details-target, .btn-group-merge .js-details-target'
   )
   if (!buttons) {
     return
   }
 
   buttons.forEach(element =>
-    element.addEventListener(
-      'click',
-      () => (select('#merge_message_field').value = '')
-    )
+    element.addEventListener('click', () => {
+      const field = select('#merge_message_field')
+      if (field.value == '') {
+        return
+      }
+      field.value = ''
+    })
   )
 }
 
