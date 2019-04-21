@@ -5,6 +5,12 @@
   "version": "1.0",
   "minimum_chrome_version": "73",
   "description": "Removes initial merge description when merging on GitHub",
+  "applications": {
+		"gecko": {
+			"id": "{11a114e1-ce9e-4094-b3e2-fb31441029ec}",
+			"strict_min_version": "65.0"
+		}
+	},
   "icons": {
 		"128": "icon.png"
 	},

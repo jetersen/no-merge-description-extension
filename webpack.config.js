@@ -4,6 +4,7 @@
 const path = require('path')
 
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -27,5 +28,21 @@ module.exports = {
       { from: 'source/manifest.json' },
       { from: 'images/icon.png' }
     ])
-  ]
+  ],
+  optimization: {
+    concatenateModules: true,
+    minimizer: [
+      new TerserPlugin({
+        parallel: true,
+        terserOptions: {
+          mangle: false,
+          compress: false,
+          output: {
+            beautify: true,
+            indent_level: 2 // eslint-disable-line @typescript-eslint/camelcase
+          }
+        }
+      })
+    ]
+  }
 }
